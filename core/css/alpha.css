@@ -1,0 +1,241 @@
+html>body {
+  font-size: 14px;
+  margin: 0 0 3rem 0;
+}
+body>a {
+  text-decoration: none;
+}
+body>a:hover {
+  color: inherit;
+}
+body>p {
+  display: none;
+}
+body>h1 {
+  padding: .5rem 0;
+}
+table>tbody>tr>td {
+  padding: 0;
+}
+table.title>tbody>tr>td {
+  font-family: sans-serif;
+  text-shadow: none;
+  font-size: 2rem;
+  font-weight: bold;
+  padding: .6rem 1rem;
+  border: none;
+}
+table.title td.username {
+  font-size: 1rem;
+  vertical-align: bottom;
+}
+div.header {
+  margin-top: .7rem;
+}
+table.title>tbody>tr:first-child, body>table:first-child>tbody>tr:first-child {
+  background: linear-gradient(to bottom, rgba(201,222,150,1) 0%,rgba(138,182,107,1) 44%,rgba(57,130,53,1) 100%);
+  border-bottom: 2px solid green;
+  display: block;
+  width: 100%;
+  box-shadow: 0 3px 3px 3px rgba(0, 0, 0, .4);
+}
+table.title, table.title>tbody>tr, table.title>tbody>tr>td {
+  border: none;
+}
+table.SubMenu {
+  margin: 1rem auto 0 auto!important;
+  width: 98%!important;
+  margin-bottom: 1rem!important;
+  padding: 0!important;
+  background-color: #207d38!important;
+  border-collapse: separate!important;
+  border-spacing: 1px!important;
+  border-radius: 6px!important;
+}
+table.SubMenu>tbody>tr>td {
+  border: 1px solid white;
+  background-color: #207d38;
+  font-size: 1.5rem;
+  height: 42px;
+  padding: 0 1rem;
+  border-radius: 6px;
+}
+div.Contents {
+  padding: 1rem;
+  border-radius: 6px;
+}
+form>table.Login {
+  margin: 3rem auto;
+}
+form td.Login {
+  padding: 0;
+  font-size: 1rem;
+}
+form th.Login {
+  padding: 0 1rem;
+  font-size: 1rem;
+}
+form td.Login>input {
+  padding: .3rem;
+  font-size: 1.5rem;
+}
+form>table.Login ~ input.button {
+  border: none;
+  font-size: 1rem;
+  width: 9rem;
+  height: auto;
+  padding: .5rem .2rem;
+  font-weight: bold;
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, .4);
+  margin: .5rem;
+  cursor: pointer;
+  border-radius: 3px;
+}
+form>table.Login ~ input.button:active {
+  box-shadow: none;
+  transform: translate3d(0, 1px, 0);
+}
+form>table.Login ~ input.button[type="submit"] {
+  background-color: #78d467;
+}
+form>table.Login ~ input.button[type="submit"]:hover {
+  background-color: #98f487;
+}
+form>table.Login ~ input.button[type="reset"] {
+  background-color: #c1ddf9;
+}
+form>table.Login ~ input.button[type="reset"]:hover {
+  background-color: #e1fdff;
+}
+
+table.MainMenu {
+  border-collapse: separate;
+  border-bottom: 1px solid #888;
+}
+table.MainMenu>tbody>tr>td {
+  border-radius: 5px 5px 0 0;
+  background-color: #65b76b;
+  border: none;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .4) inset;
+}
+table.MainMenu>tbody>tr>td:hover {
+  box-shadow: none;
+}
+table.MainMenu>tbody>tr>td.empty {
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+table.MainMenu>tbody>tr>td.Logout {
+  background-color: #ffd356;
+}
+table.MainMenu>tbody>tr>td>a:link, table.MainMenu>tbody>tr>td>a:visited {
+  font-size: 1rem;
+  display: block;
+  padding: .5rem 1rem;
+}
+table.SubMenu>tbody>tr>td>a:link, table.SubMenu>tbody>tr>td>a:visited {
+  font-size: 1rem;
+  display: inline-block;
+
+}
+
+table.noborder ~ table,
+table.EmployeeInfo,
+h1 + table,
+table.RepoState,
+form[name="indexForm"]>table,
+form[name="report/workContentForm"]>table,
+form[name="report/workContentForm"] ~ table {
+  margin: 1rem auto;
+}
+table.noborder + a + table>tbody>tr>th, table.noborder + a + table>tbody>tr>td,
+table.EmployeeInfo>tbody>tr>td, table.EmployeeInfo>tbody>tr>th,
+h1 + table>tbody>tr>td, h1 + table>tbody>tr>th,
+form[name="indexForm"]>table>tbody>tr>td, form[name="indexForm"]>table>tbody>tr>th,
+form[name="report/workContentForm"]>table>tbody>tr>td, form[name="report/workContentForm"]>table>tbody>tr>th,
+form[name="report/workContentForm"] ~ table>tbody>tr>td, form[name="report/workContentForm"] ~ table>tbody>tr>th {
+  font-size: 1rem;
+  padding: .3rem .9rem;
+}
+
+input.Text {
+  font-size: 1.5rem;
+}
+span.Current {
+  font-size: 1rem;
+}
+
+body>h1 ~ a {
+  display: inline-block;
+  padding: .3rem .6rem;
+  background-color: #1592af;
+  border-radius: 5px;
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, .4);
+}
+body>h1 ~ a:hover {
+  background-color: #35b2cf;
+}
+body>h1 ~ a:active {
+  box-shadow: none;
+  transform: translate3d(0, 1px, 0);
+}
+
+table.AddServTypeInfo {
+  margin: 0 auto;
+}
+
+form[name="inputForm"]>input.Button,
+form[name="indexForm"]>input.Button,
+form[name="report/workContentForm"]>input.Button {
+  padding-top: .3rem;
+  padding-bottom: .3rem;
+  height: auto;
+  width: 5rem;
+  font-size: .8rem;
+  border: none;
+  background-color: #58d058;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, .4);
+  margin: 3px;
+  cursor: pointer;
+}
+form[name="inputForm"]>input.Button:hover,
+form[name="indexForm"]>input.Button:hover,
+form[name="report/workContentForm"]>input.Button:hover {
+  background-color: #78f078;
+}
+form[name="inputForm"]>input.Button:active,
+form[name="indexForm"]>input.Button:active,
+form[name="report/workContentForm"]>input.Button:active {
+  box-shadow: none;
+  transform: translate3d(0, 1px, 0);
+}
+
+div.footer ~ div {
+  position: absolute!important;
+  padding: .2rem 1rem!important;
+  width: auto!important;
+  height: auto!important;
+}
+#PopupTime_Hour, #PopupTime_Min {
+  font-size: 1.5rem!important;
+  height: auto!important;
+  width: 2.2rem!important;
+}
+div.footer ~ div>table>tbody>tr>td {
+  font-size: 1.5rem!important;
+  min-width: 2rem!important;
+  width: auto!important;
+  height: auto!important;
+  padding: .5rem 0!important;
+}
+
+div.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  background-color: white;
+}
