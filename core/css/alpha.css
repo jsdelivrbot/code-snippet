@@ -187,8 +187,7 @@ table.AddServTypeInfo {
 
 form[name="inputForm"]>input.Button,
 form[name="indexForm"]>input.Button,
-form[name="report/workContentForm"]>input.Button,
-form[name="report/workContentForm"]>input.Button {
+form[name="report/workContentForm"] input.Button {
   padding-top: .3rem;
   padding-bottom: .3rem;
   height: auto;
@@ -203,14 +202,12 @@ form[name="report/workContentForm"]>input.Button {
 }
 form[name="inputForm"]>input.Button:hover,
 form[name="indexForm"]>input.Button:hover,
-form[name="report/workContentForm"]>input.Button:hover,
-form[name="report/workContentForm"]>input.Button:hover {
+form[name="report/workContentForm"] input.Button:hover {
   background-color: #78f078;
 }
 form[name="inputForm"]>input.Button:active,
 form[name="indexForm"]>input.Button:active,
-form[name="report/workContentForm"]>input.Button:active,
-form[name="report/workContentForm"]>input.Button:active {
+form[name="report/workContentForm"] input.Button:active {
   box-shadow: none;
   transform: translate3d(0, 1px, 0);
 }
