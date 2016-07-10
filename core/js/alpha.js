@@ -6,37 +6,48 @@ var head = document.getElementsByTagName('head')[0];
 head.appendChild(script);
 
 script.onload = function() {
-  var frameset = $('frameset');
+  var $frameset = $('frameset');
 
-  if (!!frameset) {
-    var frames = frameset.getElementsByTagName('frame');
-  
+  if ($frameset.length) {
+    var frames = $frameset.children('frame');
+    var $fDoc = $(frames[0].contentDocument);
+
+    $(frames[0]).attr('id', 'headerFrame');
+    $(frames[1]).attr('id', 'contentFrame');
+
     var loader = function() {
-      var fDoc = frames[0].contentDocument;
       // add classes
-      var table = fDoc.getElementsByTagName('table')[0];
-      table.setAttribute('class', 'title');
-      var div = fDoc.getElementsByTagName('div')[0];
-      div.removeAttribute('style');
-      div.setAttribute('class', 'header');
+      var $table = $($fDoc.find('table:first'));
+      $table.addClass('title');
+      var $div = $($fDoc.find('div:first'));
+      $div.removeAttr('style');
+      $div.addClass('header');
   
       // page style
-      var height = frames[0].contentDocument.documentElement.scrollHeight;
-      frameset.setAttribute('rows', height + ',*');
+      var height = $fDoc.get(0).documentElement.scrollHeight;
+      $frameset.attr('rows', height + ',*');
     };
-  
-    window.headerLoad = function() {
-      var interval = setInterval(function() {
-        if (!!frames[0].contentDocument &&
-            frames[0].contentDocument.getElementsByTagName('table').length &&
-            frames[0].contentDocument.getElementsByTagName('div').length) {
-          clearInterval(interval);
-          loader();
-        }
-      }, 100);
+
+    if ($fDoc.length &&
+        $fDoc.find('table').length &&
+        $fDoc.find('div').length) {
+      // 既にload済の場合
+      loader();
+    } else {
+      // まだloadが終わっていない場合
+      $(frames[0]).on('load', function() {
+        var interval = setInterval(function() {
+          if ($fDoc.length &&
+              $fDoc.find('table:first').length &&
+              $fDoc.find('div:first').length) {
+
+            clearInterval(interval);
+            loader();
+          }
+        }, 100);
+      });
     }
-    frames[0].setAttribute('onload', 'headerLoad()');
-  
+
     frames[1].contentWindow.onload = function() {
   
     }
