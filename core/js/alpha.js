@@ -1,4 +1,12 @@
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = 'https://code.jquery.com/jquery-3.0.0.min.js';
+var head = document.getElementsByTagName('head')[0];
+console.log(head);
+head.appendChild(script);
+
 var frameset = document.getElementsByTagName('frameset')[0];
+
 if (!!frameset) {
   var frames = frameset.getElementsByTagName('frame');
 
