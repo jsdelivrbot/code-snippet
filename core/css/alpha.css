@@ -17,6 +17,9 @@ body>h1 {
 table>tbody>tr>td {
   padding: 0;
 }
+table.title {
+  width: 100%;	
+}
 table.title>tbody>tr>td {
   font-family: sans-serif;
   text-shadow: none;
