@@ -22,7 +22,7 @@ script.onload = function() {
       var $div = $($fDoc.find('div:first'));
       $div.removeAttr('style');
       $div.addClass('header');
-  
+
       // page style
       var height = $fDoc.get(0).documentElement.scrollHeight;
       $frameset.attr('rows', height + ',*');
@@ -32,24 +32,21 @@ script.onload = function() {
         $fDoc.find('table').length &&
         $fDoc.find('div').length) {
       // 既にload済の場合
-      loader();
+      setTimeout(loader, 100);
     } else {
       // まだloadが終わっていない場合
-      $(frames[0]).on('load', function() {
-        var interval = setInterval(function() {
-          if ($fDoc.length &&
-              $fDoc.find('table:first').length &&
-              $fDoc.find('div:first').length) {
+      var interval = setInterval(function() {
+        $fDoc = $(frames[0].contentDocument);
+        if ($fDoc.length &&
+            $fDoc.find('table').length &&
+            $fDoc.find('div').length) {
 
-            clearInterval(interval);
-            loader();
-          }
-        }, 100);
-      });
+          clearInterval(interval);
+          loader();
+        }
+      }, 100);
     }
-
     frames[1].contentWindow.onload = function() {
-  
     }
   }
 }
