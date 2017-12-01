@@ -1,0 +1,67 @@
+body {
+	font-size: 12px;
+}
+
+#col0 {
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+.widget {
+	flex: 1 0 20rem;
+	border: none;
+	border-radius: 3px;
+	box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, .4);
+	overflow: hidden;
+	margin: .3rem;
+}
+
+.widget_header {
+	font: unset;
+	background: #34a9a0;
+  padding: 1rem;
+	font-size: 1rem;
+	box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, .4);
+}
+
+.widget_content {
+	border: none;
+}
+
+tr.bookmark > td {
+	padding: 0;
+}
+
+tr.bookmark > td > .link {
+	color: black;
+	text-decoration: none;
+	box-sizing: border-box;
+	padding: .3rem 1.5rem;
+	display: inline-block;
+	width: 100%;
+}
+
+tr.bookmark > td > .link:before {
+	content: "・";
+  margin-left: -1rem;
+}
+
+tr.bookmark > td > .link:hover {
+	background: #93edcd;
+}
+
+#winfo_0 {
+	flex: 2 0 26rem;
+}
+
+#winfo_0 > .widget_content table tr > td {
+	padding: .5rem .2rem;
+	background: #f4f4f4;
+}
+
+#winfo_0 > .widget_content table tr > td:first-child {
+	font-weight: bold;
+	background: #e5e5e5;
+}
