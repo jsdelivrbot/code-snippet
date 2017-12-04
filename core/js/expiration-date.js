@@ -1,4 +1,4 @@
-export default function(userName, password) {
+function expirationDate (userName, password) {
   const parser = new DOMParser();
   const xhr = new XMLHttpRequest();
 
