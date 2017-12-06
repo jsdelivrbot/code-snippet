@@ -8,7 +8,7 @@
       '.notices-box {',
       '  cursor: move;',
       '  background: white;',
-      '  position: fixed;',
+      '  position: fixed!important;',
       '  z-index: 20000000;',
       '  border: 1px solid gray;',
       '  overflow: hidden;',
