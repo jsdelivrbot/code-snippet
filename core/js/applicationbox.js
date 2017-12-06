@@ -14,8 +14,10 @@
       '  overflow: hidden;',
       '  border-radius: 4px;',
       '  box-shadow: 1px 1px 1px rgba(0, 0, 0, .5);',
+      '  width: auto;',
+      '  height: auto;',
       '}',
-      '.application-box.ui-state-disabled {',
+      '.application-box-resizable-dealie.ui-state-disabled {',
       '  opacity: unset;',
       '}',
       '.application-box-label {',
@@ -127,7 +129,10 @@
       .addClass('application-box')
       .css('position', 'fixed')
       .css('top', position.top)
-      .css('left', position.left)
+      .css('left', position.left);
+
+    const $resizableBox = $('<div />')
+      .addClass('application-box-resizable-dealie')
       .css('width', size.width)
       .css('height', size.height);
 
@@ -163,7 +168,9 @@
           savePosition(e, ui);
         },
         containment: 'parent'
-      })
+      });
+
+    $resizableBox
       .resizable({
         minWidth: 350,
         minHeight: 200,
@@ -200,7 +207,7 @@
 
     if (settings.minimized) {
       $minimize.hide();
-      $applicationBox.css('height', '3.3rem').resizable('disable');
+      $resizableBox.css('height', '3.3rem').resizable('disable');
     } else {
       $maximize.hide();
     }
@@ -228,14 +235,15 @@
       $('body').append($style)
     });
 
-    $applicationBox.append($title).append($iconbox).append($tableCloth).append($applicationFrame)
+    $resizableBox.append($title).append($iconbox).append($tableCloth).append($applicationFrame);
+    $applicationBox.append($resizableBox);
 
     $(document)
       .on('click', '#application-reload', function() {
         $applicationFrame[0].contentWindow.location.reload();
       })
       .on('click', '#application-minimize', function() {
-        $applicationBox.css('height', '3.3rem').resizable('disable');
+        $resizableBox.css('height', '3.3rem').resizable('disable');
         $minimize.hide();
         $maximize.show();
 
@@ -243,7 +251,7 @@
         save();
       })
       .on('click', '#application-maximize', function() {
-        $applicationBox.css('height', size.height).resizable('enable');
+        $resizableBox.css('height', size.height).resizable('enable');
         $minimize.show();
         $maximize.hide();
 
