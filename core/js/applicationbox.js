@@ -95,6 +95,12 @@ if (targets.indexOf(displayId) != -1) {
     '}',
     '#imui-container div.imbox div.imbox-timeline div.imbox-timeline-body {',
     '  border: none;',
+    '}',
+    '#imui-container div.imbox div.imbox-timeline div.imbox-timeline-body #imbox_timeline_thread div.imbox-timeline-thread-body div.imbox-timeline-thread-bottom div.imbox-timeline-thread-posted-option div.imbox-timeline-thread-posted-option-body.imbox-timeline-thread-reply-message span.imbox-timeline-thread-reply-right {',
+    '  width: unset;',
+    '}',
+    '#imui-container div.imbox div.imbox-timeline div.imbox-timeline-body #imbox_timeline_thread div.imbox-timeline-thread-body span.imbox-timeline-thread-post-right div.imbox-timeline-thread-post-right-body div.imbox-timeline-thread-message div.imbox-timeline-thread-share span.imbox-timeline-thread-share-right {',
+    '  width: unset;',
     '}'
   ].join('\n');
 
