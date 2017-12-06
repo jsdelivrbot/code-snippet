@@ -15,6 +15,9 @@
       '  border-radius: 4px;',
       '  box-shadow: 1px 1px 1px rgba(0, 0, 0, .5);',
       '}',
+      '.application-box.ui-state-disabled {',
+      '  opacity: unset;',
+      '}',
       '.application-box-label {',
       '  color: rgba(255,255,255,.8);',
       '  font-weight: bold;',
@@ -63,6 +66,9 @@
       '  width: 100%;',
       '  height: calc(100% - 3.3rem);',
       '  display: none;',
+      '}',
+      '.ui-resizable-disabled .ui-resizable-handle {',
+      '  display: none!important;',
       '}'
     ].join('\n');
 
@@ -106,8 +112,8 @@
     let settings = localStorage.applicationBoxSettings || '{}';
     settings = JSON.parse(settings);
 
-    let position = settings.position || {};
-    let size = settings.size || {};
+    let position = settings.position || {top: 10, left: 10};
+    let size = settings.size || {width: 500, height: 350};
 
     const save = function() {
       localStorage.applicationBoxSettings = JSON.stringify(settings);
@@ -117,19 +123,13 @@
     $applicationBoxStyle.text(applicationBoxStyle);
 
     const $applicationBox = $('<div />');
-    $applicationBox.addClass('application-box').css('position', 'fixed');
-
-    if (position.top != null) $applicationBox.css('top', position.top);
-    else $applicationBox.css('bottom', 10);
-
-    if (position.left != null) $applicationBox.css('left', position.left);
-    else $applicationBox.css('left', 10);
-
-    if (size.width != null) $applicationBox.css('width', size.width);
-    else $applicationBox.css('width', 500);
-
-    if (size.height != null) $applicationBox.css('height', size.height);
-    else $applicationBox.css('height', 350);
+    $applicationBox
+      .addClass('application-box')
+      .css('position', 'fixed')
+      .css('top', position.top)
+      .css('left', position.left)
+      .css('width', size.width)
+      .css('height', size.height);
 
     const showTableCloth = function() {
       $('#table-cloth').show();
@@ -143,6 +143,7 @@
       if (settings.position == null) settings.position = {};
       settings.position.top = ui.position.top;
       settings.position.left = ui.position.left;
+      position = settings.position;
       save();
     }
 
@@ -150,6 +151,7 @@
       if (settings.size == null) settings.size = {};
       settings.size.width = ui.size.width;
       settings.size.height = ui.size.height;
+      size = settings.size;
       save();
     }
 
@@ -198,7 +200,7 @@
 
     if (settings.minimized) {
       $minimize.hide();
-      $applicationBox.css('height', '3.3rem');
+      $applicationBox.css('height', '3.3rem').resizable('disable');
     } else {
       $maximize.hide();
     }
@@ -233,7 +235,7 @@
         $applicationFrame[0].contentWindow.location.reload();
       })
       .on('click', '#application-minimize', function() {
-        $applicationBox.css('height', '3.3rem');
+        $applicationBox.css('height', '3.3rem').resizable('disable');
         $minimize.hide();
         $maximize.show();
 
@@ -241,7 +243,7 @@
         save();
       })
       .on('click', '#application-maximize', function() {
-        $applicationBox.css('height', '350px');
+        $applicationBox.css('height', size.height).resizable('enable');
         $minimize.show();
         $maximize.hide();
 
