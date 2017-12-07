@@ -1,6 +1,7 @@
 (function($) {
   const displayId = $('#imbox').data('display_id');
   const targets = ['DISPLAY_MYBOX', 'DISPLAY_DIRECTMESSAGEBOX', 'DISPLAY_APPLICATIONBOX', 'DISPLAY_COMPANYBOX', 'DISPLAY_USER_MESSAGE'];
+  const URL = 'https://accel.intra-mart.jp/accel/imbox/noticemessage';
 
   if (targets.indexOf(displayId) != -1) {
 
@@ -14,8 +15,10 @@
       '  overflow: hidden;',
       '  border-radius: 4px;',
       '  box-shadow: 1px 1px 1px rgba(0, 0, 0, .5);',
+      '  width: auto;',
+      '  height: auto;',
       '}',
-      '.notices-box.ui-state-disabled {',
+      '.notices-box-resizable-dealie.ui-state-disabled {',
       '  opacity: unset;',
       '}',
       '.notices-box-label {',
@@ -51,6 +54,9 @@
       '}',
       '#notices-maximize {',
       '  background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ0IDQ0IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0NCA0NDsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHdpZHRoPSIyNHB4IiBoZWlnaHQ9IjI0cHgiPgo8cGF0aCBkPSJNMjIsNDRjLTMuMzA5LDAtNi0yLjY2NS02LTUuOTQxVjI4SDUuOTQxQzIuNjY1LDI4LDAsMjUuMzA5LDAsMjJzMi42NjUtNiw1Ljk0MS02SDE2VjUuOTQxQzE2LDIuNjY1LDE4LjY5MSwwLDIyLDAgIHM2LDIuNjY1LDYsNS45NDFWMTZoMTAuMDU5QzQxLjMzNSwxNiw0NCwxOC42OTEsNDQsMjJzLTIuNjY1LDYtNS45NDEsNkgyOHYxMC4wNTlDMjgsNDEuMzM1LDI1LjMwOSw0NCwyMiw0NHogTTUuOTQxLDE4ICBDMy44MDUsMTgsMiwxOS44MzIsMiwyMnMxLjgwNSw0LDMuOTQxLDRIMTh2MTIuMDU5QzE4LDQwLjE5NSwxOS44MzIsNDIsMjIsNDJzNC0xLjgwNSw0LTMuOTQxVjI2aDEyLjA1OUM0MC4xOTUsMjYsNDIsMjQuMTY4LDQyLDIyICBzLTEuODA1LTQtMy45NDEtNEgyNlY1Ljk0MUMyNiwzLjgwNSwyNC4xNjgsMiwyMiwycy00LDEuODA1LTQsMy45NDFWMThINS45NDF6IiBmaWxsPSIjMDAwMDAwIi8+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=)',
+      '}',
+      '#notices-home {',
+      '  background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTkuMS4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDQ2LjE3NyA0Ni4xNzciIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDQ2LjE3NyA0Ni4xNzc7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iMjRweCIgaGVpZ2h0PSIyNHB4Ij4KPHBhdGggZD0iTTIzLjg1NiwxLjQ1MWwxMC45ODQsMTAuMjIybDEwLjk4NCwxMC4yMjJjMC40NDQsMC40MjksMC40NzYsMS4xMjcsMC4wNjMsMS41ODcgIGMtMC4yMjIsMC4yMzgtMC41MjQsMC4zNDktMC44MjUsMC4zNDl2MC4wMTZoLTUuNTU1VjQzLjkxYzAsMC42MTktMC41MDgsMS4xMjctMS4xMjcsMS4xMjdoLTguNzQ2ICBjLTAuNjE5LDAtMS4xMTEtMC41MDgtMS4xMTEtMS4xMjdWMjguNDgySDE3LjY2NlY0My45MWMwLDAuNjE5LTAuNTA4LDEuMTI3LTEuMTI3LDEuMTI3SDcuNzkzYy0wLjYxOSwwLTEuMTExLTAuNTA4LTEuMTExLTEuMTI3ICBWMjMuODQ3SDEuMTExQzAuNDkyLDIzLjg0NywwLDIzLjM0LDAsMjIuNzIxYzAtMC4zNDksMC4xNTktMC42NjcsMC40MTMtMC44NzNsMTAuOTM2LTEwLjE3NEwyMi4zMzIsMS40MzUgIEMyMi43NjEsMS4wMzksMjMuNDI3LDEuMDM5LDIzLjg1NiwxLjQ1MUwyMy44NTYsMS40NTF6IE0zMy4zMTYsMTMuMzA4TDIzLjA5NCwzLjc4NWwtMTAuMjIyLDkuNTI0bC04LjkwNCw4LjI4NmgzLjgyNSAgYzAuNjE5LDAsMS4xMjcsMC41MDgsMS4xMjcsMS4xMjd2MjAuMDYzaDYuNTA4VjI3LjM3MWMwLTAuNjE5LDAuNDkyLTEuMTI3LDEuMTExLTEuMTI3aDEzLjA5NWMwLjYxOSwwLDEuMTI3LDAuNTA4LDEuMTI3LDEuMTI3ICB2MTUuNDEyaDYuNTA4VjIyLjcyMWMwLTAuNjE5LDAuNDkyLTEuMTI3LDEuMTExLTEuMTI3aDMuODQxTDMzLjMxNiwxMy4zMDh6IiBmaWxsPSIjMDAwMDAwIi8+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=)',
       '}',
       '.notices-tool-icon:hover {',
       '  background-color: rgba(0,0,0,.1);',
@@ -121,9 +127,13 @@
       .addClass('notices-box')
       .css('position', 'fixed')
       .css('top', position.top)
-      .css('left', position.left)
+      .css('left', position.left);
+
+    const $resizableBox = $('<div />');
+    $resizableBox
+      .addClass('notices-box-resizable-dealie')
       .css('width', size.width)
-      .css('height', size.height)
+      .css('height', size.height);
 
     const showTableCloth = function() {
       $('#table-cloth').show();
@@ -157,7 +167,9 @@
           savePosition(e, ui);
         },
         containment: 'parent'
-      })
+      });
+
+    $resizableBox
       .resizable({
         minWidth: 350,
         minHeight: 200,
@@ -177,6 +189,11 @@
     const $iconbox = $('<div />');
     $iconbox.addClass('notices-tool-box');
 
+    const $home = $('<span />');
+    $home
+      .attr('id', 'notices-home')
+      .addClass('notices-tool-icon');
+
     const $reload = $('<span />');
     $reload
       .attr('id', 'notices-reload')
@@ -194,19 +211,20 @@
 
     if (settings.minimized) {
       $minimize.hide();
-      $noticesBox.css('height', '3.3rem').resizable('disable');
+      $resizableBox.css('height', '3.3rem').resizable('disable');
     } else {
       $maximize.hide();
     }
 
     $iconbox
+      .append($home)
       .append($reload)
       .append($minimize)
       .append($maximize);
 
     const $noticesFrame = $('<iframe />');
     $noticesFrame
-      .attr('src', 'https://accel.intra-mart.jp/accel/imbox/noticemessage')
+      .attr('src', URL)
       .addClass('notices-frame');
 
     const $tableCloth = $('<div />');
@@ -222,14 +240,18 @@
       $('body').append($style)
     });
 
-    $noticesBox.append($title).append($iconbox).append($tableCloth).append($noticesFrame)
+    $resizableBox.append($title).append($iconbox).append($tableCloth).append($noticesFrame);
+    $noticesBox.append($resizableBox);
 
     $(document)
+      .on('click', '#notices-home', function() {
+        $noticesFrame[0].contentWindow.location.href = URL;
+      })
       .on('click', '#notices-reload', function() {
         $noticesFrame[0].contentWindow.location.reload();
       })
       .on('click', '#notices-minimize', function() {
-        $noticesBox.css('height', '3.3rem').resizable('disable');
+        $resizableBox.css('height', '3.3rem').resizable('disable');
         $minimize.hide();
         $maximize.show();
 
@@ -237,7 +259,7 @@
         save();
       })
       .on('click', '#notices-maximize', function() {
-        $noticesBox.css('height', size.height).resizable('enable');
+        $resizableBox.css('height', size.height).resizable('enable');
         $minimize.show();
         $maximize.hide();
 
