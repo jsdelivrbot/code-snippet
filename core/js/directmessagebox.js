@@ -166,11 +166,11 @@
       .css('height', size.height);
 
     const showTableCloth = function() {
-      $('#table-cloth').show();
+      $('#directmessage-table-cloth').show();
     };
 
     const hideTableCloth = function(e, ui) {
-      $('#table-cloth').hide();
+      $('#directmessage-table-cloth').hide();
     }
 
     const savePosition = function(e, ui) {
@@ -259,7 +259,7 @@
 
     const $tableCloth = $('<div />');
     $tableCloth
-      .attr('id', 'table-cloth')
+      .attr('id', 'directmessage-table-cloth')
       .addClass('directmessage-table-cloth');
 
     $directmessageFrame.on('load', function() {
