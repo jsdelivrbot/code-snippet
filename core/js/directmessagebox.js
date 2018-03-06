@@ -138,6 +138,9 @@
       '#imui-container div.imbox div.imbox-common-user-select div.imbox-common-user-box-area {',
       '  width: calc(100% - 120px);',
       '}',
+      '#imui-container div.imbox div.imbox-timeline div.imbox-timeline-body #imbox_timeline_thread div.imbox-timeline-thread-body span.imbox-timeline-thread-post-right div.imbox-timeline-thread-attach-file span.imbox-timeline-thread-attach-file-right div.imbox-timeline-thread-attach-file-name {',
+      '  word-break: break-all;',
+      '}',
     ].join('\n');
 
     let settings = localStorage.directmessageBoxSettings || '{}';
