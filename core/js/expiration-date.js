@@ -1,34 +1,39 @@
-function expirationDate (userName, password) {
-  const parser = new DOMParser();
-  const xhr = new XMLHttpRequest();
+(() => {
+  const subheader = document.querySelector('#subheader');
+  if (!subheader) return;
 
-  const putOnHeader = function(str, style) {
-    const inline = document.createElement('span');
+  window.expirationDate = (userName, password) => {
+    const parser = new DOMParser();
+    const xhr = new XMLHttpRequest();
 
-    inline.innerHTML = str;
-    inline.style.display = 'inline-block';
-    inline.style.padding = '.2rem .5rem';
+    const putOnHeader = function(str, style) {
+      const inline = document.createElement('span');
 
-    if (style != null) Object.keys(style).forEach(key => {
-      inline.style[key] = style[key];
-    });
+      inline.innerHTML = str;
+      inline.style.display = 'inline-block';
+      inline.style.padding = '.2rem .5rem';
 
-    document.querySelector('#subheader').appendChild(inline);
-  }
+      if (style != null) Object.keys(style).forEach(key => {
+        inline.style[key] = style[key];
+      });
 
-  xhr.open('get', 'https://wg.alpha.co.jp/proxy/https/passwdchg2.alpha.co.jp/UserInfo.aspx', true, userName, password);
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.send();
+      document.querySelector('#subheader').appendChild(inline);
+    }
 
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      const doc = parser.parseFromString(xhr.responseText, 'application/xml');
-      const expireLimit = doc.querySelector('#ExpireLimit');
-      const remain = doc.querySelector('#Remain');
+    xhr.open('get', 'https://wg.alpha.co.jp/proxy/https/passwdchg2.alpha.co.jp/UserInfo.aspx', true, userName, password);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send();
 
-      putOnHeader('パスワード有効期限');
-      putOnHeader(expireLimit.innerHTML);
-      putOnHeader(remain.innerHTML, {fontSize: '1.2rem', color: '#f88'});
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        const doc = parser.parseFromString(xhr.responseText, 'application/xml');
+        const expireLimit = doc.querySelector('#ExpireLimit');
+        const remain = doc.querySelector('#Remain');
+
+        putOnHeader('パスワード有効期限');
+        putOnHeader(expireLimit.innerHTML);
+        putOnHeader(remain.innerHTML, {fontSize: '1.2rem', color: '#f88'});
+      }
     }
   }
-}
+})();
