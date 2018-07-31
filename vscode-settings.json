@@ -1,0 +1,88 @@
+{
+  // editor
+  "editor.detectIndentation": false,
+  "editor.dragAndDrop": false,
+  "editor.fontFamily": "Ricty Diminished",
+  "editor.fontSize": 16,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.lineHeight": 22,
+  "editor.lineNumbers": "off",
+  "editor.links": false,
+  "editor.minimap.enabled": false,
+  "editor.mouseWheelZoom": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
+  },
+  "editor.renderLineHighlight": "all",
+  "editor.renderWhitespace": "all",
+  "editor.smoothScrolling": true,
+  "editor.tabSize": 2,
+  "editor.trimAutoWhitespace": false,
+  // explorer
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  // files
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  // git
+  "git.ignoreMissingGitWarning": true,
+  // http
+  "http.proxy": "****",
+  // markdown
+  "markdown.preview.breaks": true,
+  "markdown.styles": [
+    "****"
+  ],
+  // prettier
+  "prettier.bracketSpacing": false,
+  "prettier.printWidth": 150,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  // window
+  "window.menuBarVisibility": "toggle",
+  "window.restoreWindows": "all",
+  "window.zoomLevel": 0,
+  // workbench
+  "workbench.activityBar.visible": true,
+  "workbench.colorTheme": "Boron",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorCustomizations": {
+    "[Boron]": {
+      "statusBar.background": "#3a3a3a",
+      "panel.background": "#424242",
+      "sideBar.background": "#2c2c2c",
+      "editor.lineHighlightBackground": "#5a5a5a80",
+      "editor.selectionBackground": "#ff971f9a",
+      "editorWhitespace.foreground": "#315e49a8"
+    }
+  },
+  // background
+  "background.customImages": [
+    "****"
+  ],
+  "background.useDefault": false,
+  "background.style": {
+    "content": "''",
+    "pointer-events": "none",
+    "position": "absolute",
+    "z-index": "99999",
+    "width": "100%",
+    "height": "100%",
+    "background-size": "auto calc(100% + 280px)",
+    "background-position": "100% calc(100% + 260px)",
+    "background-repeat": "no-repeat",
+    "opacity": 0.2
+  },
+  "background.useFront": false,
+  // markdown-pdf
+  "markdown-pdf.breaks": true,
+  "markdown-pdf.displayHeaderFooter": false,
+  "markdown-pdf.highlightStyle": "monokai.css",
+  "markdown-pdf.styles": [
+    "****"
+  ],
+  "typescript.updateImportsOnFileMove.enabled": "always",
+}
