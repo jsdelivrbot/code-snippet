@@ -1,4 +1,4 @@
 # My Code Snippet
 
-- https://rawgit.com/spookybird/code-snippet/master/core/js/alpha.js
-- https://rawgit.com/spookybird/code-snippet/master/core/css/alpha.css
+- https://cdn.jsdelivr.net/gh/spookybird/code-snippet/core/js/alpha.js
+- https://cdn.jsdelivr.net/gh/spookybird/code-snippet/core/css/alpha.css
